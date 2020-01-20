@@ -1,0 +1,57 @@
+.display {
+  display: block;
+  margin: 0 auto; }
+
+.keyboard {
+  margin: 0 auto;
+  margin-top: 28px;
+  width: 100%; }
+
+.keyShape {
+  display: inline-block;
+  height: 38px;
+  width: 38px;
+  background: #002344;
+  margin: 2px;
+  color: #fff;
+  font-size: 20px;
+  font-family: Roboto;
+  position: relative; }
+
+.symbol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.backspace {
+  width: 98px;
+  height: 38px; }
+
+.delete {
+  width: 45px;
+  height: 38px; }
+
+.tab {
+  width: 50px;
+  height: 38px; }
+
+.capslock {
+  width: 100px;
+  height: 38px; }
+
+.enter {
+  width: 86px;
+  height: 38px; }
+
+.shift-left {
+  width: 100px;
+  height: 38px; }
+
+.shift-right {
+  width: 87px;
+  height: 38px; }
+
+.space {
+  width: 329px;
+  height: 38px; }

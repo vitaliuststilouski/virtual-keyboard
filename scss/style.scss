@@ -1,0 +1,72 @@
+$height: 38px;
+
+.display {
+    display: block;
+    margin: 0 auto;
+}
+
+.keyboard {
+    margin: 0 auto;
+    margin-top: 28px;
+    // max-width: 590px;
+    width: 100%;
+}
+
+.keyShape {
+    display: inline-block;
+    height: $height;
+    width: 38px;
+    background: #002344;
+    margin: 2px;
+    color: #fff;
+    font-size: 20px;
+    font-family: Roboto;
+    position: relative;
+}
+
+.symbol {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.backspace {
+    width: 98px;
+    height: $height;
+}
+
+.delete {
+    width: 45px;
+    height: $height;
+}
+
+.tab {
+    width: 50px;
+    height: $height;
+}
+
+.capslock {
+    width: 100px;
+    height: $height;
+}
+
+.enter {
+    width: 86px;
+    height: $height;
+}
+
+.shift-left {
+    width: 100px;
+    height: $height;
+}
+
+.shift-right {
+    width: 87px;
+    height: $height;
+}
+
+.space {
+    width: 329px;
+    height: $height;
+}
