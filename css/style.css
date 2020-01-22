@@ -5,18 +5,23 @@
 .keyboard {
   margin: 0 auto;
   margin-top: 28px;
+  max-width: 680px;
   width: 100%; }
 
 .keyShape {
   display: inline-block;
-  height: 38px;
-  width: 38px;
+  border-radius: 5px;
+  padding: 18px;
   background: #002344;
-  margin: 2px;
+  margin: 0 2px;
   color: #fff;
-  font-size: 20px;
-  font-family: Roboto;
-  position: relative; }
+  font-size: 17px;
+  font-family: 'Tahoma';
+  position: relative;
+  cursor: pointer; }
+
+.keyShape:hover {
+  background-color: #6B97BE; }
 
 .symbol {
   position: absolute;
@@ -25,33 +30,33 @@
   transform: translate(-50%, -50%); }
 
 .backspace {
-  width: 98px;
-  height: 38px; }
+  width: 100%;
+  max-width: 119px; }
 
 .delete {
-  width: 45px;
-  height: 38px; }
+  max-width: 45px;
+  width: 100%; }
 
 .tab {
-  width: 50px;
-  height: 38px; }
+  max-width: 35px;
+  width: 100%; }
 
 .capslock {
-  width: 100px;
-  height: 38px; }
+  max-width: 50px;
+  width: 100%; }
 
 .enter {
-  width: 86px;
-  height: 38px; }
+  max-width: 110px;
+  width: 100%; }
 
 .shift-left {
-  width: 100px;
-  height: 38px; }
+  max-width: 80px;
+  width: 100%; }
 
 .shift-right {
-  width: 87px;
-  height: 38px; }
+  max-width: 87px;
+  width: 100%; }
 
 .space {
-  width: 329px;
-  height: 38px; }
+  max-width: 320px;
+  width: 100%; }

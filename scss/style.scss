@@ -1,4 +1,4 @@
-$height: 38px;
+$width: 100%;
 
 .display {
     display: block;
@@ -9,19 +9,25 @@ $height: 38px;
     margin: 0 auto;
     margin-top: 28px;
     // max-width: 590px;
-    width: 100%;
+    max-width: 680px;
+    width: $width;
 }
 
 .keyShape {
     display: inline-block;
-    height: $height;
-    width: 38px;
+    border-radius: 5px;
+    padding: 18px;
     background: #002344;
-    margin: 2px;
+    margin: 0 2px;
     color: #fff;
-    font-size: 20px;
-    font-family: Roboto;
+    font-size: 17px;
+    font-family: 'Tahoma';
     position: relative;
+    cursor: pointer;
+}
+
+.keyShape:hover {
+    background-color: #6B97BE;
 }
 
 .symbol {
@@ -32,41 +38,41 @@ $height: 38px;
 }
 
 .backspace {
-    width: 98px;
-    height: $height;
+    width: $width;
+    max-width: 119px;
 }
 
 .delete {
-    width: 45px;
-    height: $height;
+    max-width: 45px;
+    width: $width;
 }
 
 .tab {
-    width: 50px;
-    height: $height;
+    max-width: 35px;
+    width: $width;
 }
 
 .capslock {
-    width: 100px;
-    height: $height;
+    max-width: 50px;
+    width: $width;
 }
 
 .enter {
-    width: 86px;
-    height: $height;
+    max-width: 110px;
+    width: $width;
 }
 
 .shift-left {
-    width: 100px;
-    height: $height;
+    max-width: 80px;
+    width: $width;
 }
 
 .shift-right {
-    width: 87px;
-    height: $height;
+    max-width: 87px;
+    width: $width;
 }
 
 .space {
-    width: 329px;
-    height: $height;
+    max-width: 320px;
+    width: $width;
 }
