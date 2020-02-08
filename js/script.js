@@ -133,8 +133,8 @@ var keyboardArray = [
             originalCode: 'CapsLock'
         },
         {
-            keyRU: 'a',
-            keyEn: 'ф',
+            keyRU: 'ф',
+            keyEn: 'a',
             originalCode: 'KeyA'
         }, {
             keyRU: 'ы',
@@ -226,11 +226,16 @@ var keyboardArray = [
         {
             keyRU: 'ю',
             keyEn: '.',
-            originalCode: 'P'
+            originalCode: 'Period'
         },
         {
-            keyRU: '&#129033',
-            keyEn: '&#129033',
+            keyRU: '.',
+            keyEn: '/',
+            originalCode: 'Slash'
+        },
+        {
+            keyRU: '🠉',
+            keyEn: '🠉',
             originalCode: 'ArrowUp'
         },
         {
@@ -239,8 +244,6 @@ var keyboardArray = [
             originalCode: 'ShiftRight'
         }
     ],
-    // ['Ctrl', 'Win', 'Alt', '', 'Alt', '&#129032', '&#129035', '&#129034', 'Ctrl']
-
     [{
             keyRU: 'Ctrl',
             keyEn: 'Ctrl',
@@ -255,25 +258,31 @@ var keyboardArray = [
             keyEn: 'Alt',
             originalCode: 'AltLeft'
         }, {
-            keyRU: '',
-            keyEn: '',
+            keyRU: ' ',
+            keyEn: ' ',
             originalCode: 'Space'
         }, {
-            keyRU: '&#129032',
-            keyEn: '&#129032',
+            keyRU: 'Alt',
+            keyEn: 'Alt',
+            originalCode: 'AltRight'
+        },
+
+        {
+            keyRU: '🠈',
+            keyEn: '🠈',
             originalCode: 'ArrowLeft'
         }, {
-            keyRU: '&#129035',
-            keyEn: '&#129035',
+            keyRU: '🠋',
+            keyEn: '🠋',
             originalCode: 'ArrowDown'
         }, {
-            keyRU: '&#129034',
-            keyEn: '&#129034',
+            keyRU: '🠊',
+            keyEn: '🠊',
             originalCode: 'ArrowRight'
         }, {
             keyRU: 'Ctrl',
             keyEn: 'Ctrl',
-            originalCode: 'ArrowRight'
+            originalCode: 'ControlRight'
         }
     ]
 ];
@@ -284,6 +293,7 @@ function makeContainer() {
     document.body.append(container);
 }
 makeContainer();
+
 
 // show display for  reflecting
 function showDisplay() {
@@ -320,33 +330,56 @@ function makeKey() {
             key.classList.add('keyShape');
             keyLine.append(key);
 
-            if (keyboardArray[i][j]['keyRU'] === 'Backspace') {
-                key.classList.add('backspace')
+            if (keyboardArray[i][j]['originalCode'] === 'Backspace') {
+                key.classList.add('backspace');
             }
 
-            if (keyboardArray[i][j]['keyRU'] === 'Del') {
+            if (keyboardArray[i][j]['originalCode'] === 'Delete') {
                 key.classList.add('delete');
             }
 
-            if (keyboardArray[i][j]['keyRU'] === 'Enter') {
-                key.classList.add('enter')
+            if (keyboardArray[i][j]['originalCode'] === 'Enter') {
+                key.classList.add('enter');
             }
 
 
-            if (keyboardArray[i][j]['keyRU'] === 'Tab') {
-                key.classList.add('tab')
+            if (keyboardArray[i][j]['originalCode'] === 'Tab') {
+                key.classList.add('tab');
             }
 
-            if (keyboardArray[i][j]['keyRU'] === 'CapsLock') {
-                key.classList.add('capslock')
+            if (keyboardArray[i][j]['originalCode'] === 'CapsLock') {
+                key.classList.add('capslock');
             }
 
-            if (keyboardArray[i][j]['keyRU'] === 'Shift') {
-                key.classList.add('shift-left')
+            if (keyboardArray[i][j]['originalCode'] === 'ShiftLeft') {
+                key.classList.add('shift-left');
+                key.setAttribute('data-about', 'ShiftLeft');
             }
 
-            if (keyboardArray[i][j]['keyRU'] === '') {
-                key.classList.add('space')
+            if (keyboardArray[i][j]['originalCode'] === 'ShiftRight') {
+                key.classList.add('shift-right');
+                key.setAttribute('data-about', 'ShiftRight');
+            }
+
+            if (keyboardArray[i][j]['originalCode'] === 'AltLeft') {
+                key.setAttribute('data-about', 'AltLeft');
+            }
+
+            if (keyboardArray[i][j]['originalCode'] === 'AltRight') {
+                key.setAttribute('data-about', 'AltRight');
+            }
+
+
+            if (keyboardArray[i][j]['originalCode'] === 'ControlLeft') {
+                key.setAttribute('data-about', 'ControlLeft');
+            }
+
+            if (keyboardArray[i][j]['originalCode'] === 'ControlRight') {
+                key.setAttribute('data-about', 'ControlRight');
+            }
+
+            if (keyboardArray[i][j]['originalCode'] === 'Space') {
+                key.classList.add('space');
             }
         }
         document.querySelector('.keyboard').append(keyLine);
@@ -355,25 +388,62 @@ function makeKey() {
 }
 makeKey();
 
+// make array from pseudo-array
+var buttons = [].slice.call(document.querySelectorAll('.keyShape'));
+
+
+// concat array
+var concatKeyboardArray = [].concat.apply([], keyboardArray); // to do
+
 // make autofocus in input
 function autoFocus() {
     document.querySelector('.display').focus();
 }
-
 autoFocus();
 
-
 document.addEventListener('keydown', function (event) {
-    if (event.code === keyboardArray[0][1]['originalCode']) {
-        keyboardArray[0][1]['originalCode']
+    // console.log(event.getModifierState('CapsLock'))
+    console.log(event.location)
+
+    function checkKey() {
+        var pressedButton = concatKeyboardArray.find(function (element) {
+            if (element['originalCode'] === event.code) {
+                return element;
+            }
+        })
+        var letterRU = pressedButton['keyRU'];
+        var letterEn = pressedButton['keyEn'];
+        var originalCode = pressedButton['originalCode'];
+
+        buttons.forEach(function (el) {
+            if (originalCode === el.dataset.about) {
+                el.style.backgroundColor = 'red';
+            }
+            if (letterRU === el.textContent && event.location === 0) {
+                el.style.backgroundColor = 'red';
+            }
+            if (originalCode === 'MetaLeft' && event.location === 1 && letterRU === el.textContent) {
+                el.style.backgroundColor = 'red';
+            }
+            if (originalCode === 'Tab') {
+                event.preventDefault();
+            }
+            if (originalCode === 'CapsLock') {
+                if (event.getModifierState('CapsLock')) {
+
+                }
+            }
+        });
     }
+    checkKey();
 })
 
-var buttons = Array.from(document.querySelectorAll('.keyShape'));
-console.log(buttons)
-
-var letter = buttons.forEach(function (element) {
-    console.log(element)
+document.addEventListener('keyup', function (event) {
+    function checkKey() {
+        buttons.forEach(function (el) {
+            el.style.backgroundColor = '';
+            el.removeAttribute('style');
+        });
+    }
+    checkKey();
 })
-
-// console.log(element)
